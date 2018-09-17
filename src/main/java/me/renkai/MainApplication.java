@@ -1,12 +1,12 @@
-package me.renkai.Java_Concurrency;
+package me.renkai;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavaConcurrencyApplication {
+public class MainApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JavaConcurrencyApplication.class, args);
+		SpringApplication.run(MainApplication.class, args);
 	}
 }
