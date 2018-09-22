@@ -29,6 +29,8 @@ repositories {
 
 
 dependencies {
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8'
+
 	compile('org.springframework.boot:spring-boot-starter')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
