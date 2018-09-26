@@ -1,4 +1,4 @@
-package me.renkai.Java_Concurrency;
+package me.renkai.practice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

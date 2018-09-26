@@ -1,4 +1,4 @@
-package me.renkai.latch_barrier;
+package me.renkai.concurrency;
 
 import java.util.concurrent.CountDownLatch;
 

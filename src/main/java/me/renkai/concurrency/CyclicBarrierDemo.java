@@ -1,8 +1,5 @@
-package me.renkai.latch_barrier;
+package me.renkai.concurrency;
 
-import org.omg.PortableServer.THREAD_POLICY_ID;
-
-import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
