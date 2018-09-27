@@ -25,7 +25,7 @@ public class CyclicBarrierDemo {
                 try {
                     System.out.println(name + "准备好了");
                     cyclicBarrier.await();
-                    //如果await后面有代码，先执行CyclicBarrier的barrierAction，再执行await后面的代码
+                    //如果await后面有代码，先执行CyclicBarrier构造函数里的barrierAction，再执行await后面的代码
                 } catch (InterruptedException | BrokenBarrierException e) {
                     e.printStackTrace();
                 }
