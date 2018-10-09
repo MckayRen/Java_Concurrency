@@ -1,6 +1,6 @@
 package me.renkai.concurrency;
 
-public class InterruptDemo {
+public class ThreadDemo {
     public static void main(String[] args) throws InterruptedException {
         Thread thread = new Thread(() -> {
             try {
@@ -23,5 +23,8 @@ public class InterruptDemo {
         thread.interrupt();
         System.out.println("main3 " + thread.isInterrupted());
 
+
+        Runtime runtime = Runtime.getRuntime();
+        runtime.addShutdownHook(new Thread(() -> System.out.println("hook")));
     }
 }
