@@ -35,13 +35,19 @@ public class BlockingQueueDemo {
         for (int i = 0; i < 2; i++) {
             new Thread(new Producer()).start();
         }
-
         for (int i = 0; i < 5; i++) {
             new Thread(new Consumer()).start();
         }
-
         for (int i = 0; i < 3; i++) {
             new Thread(new Producer()).start();
         }
+
+        blockingQueue.add(1);
+        blockingQueue.remove();
+        blockingQueue.offer(2);
+        blockingQueue.peek();
+        blockingQueue.element();
+        blockingQueue.poll();
+
     }
 }
