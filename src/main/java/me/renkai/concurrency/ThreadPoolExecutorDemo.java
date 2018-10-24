@@ -7,18 +7,22 @@ public class ThreadPoolExecutorDemo {
         ThreadPoolExecutor executor = new MyThreadPoolExecutor(2, 2,
                 1L, TimeUnit.SECONDS, new LinkedBlockingDeque<>(), new ThreadPoolExecutor.AbortPolicy());
 
-        for (int i = 0; i < 2; i++) {
-            executor.execute(() -> {
-                try {
-                    System.out.println(1);
-                    Thread.sleep(1200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
+        for (int i = 0; i < 8; i++) {
+            try {
+                executor.execute(() -> {
+                    try {
+                        System.out.println(1);
+                        Thread.sleep(1200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
+            } catch (RejectedExecutionException e) {
+                e.printStackTrace();
+            }
         }
 
-        executor.shutdown();
+        executor.shutdownNow();
     }
 
     static class MyThreadPoolExecutor extends ThreadPoolExecutor {
