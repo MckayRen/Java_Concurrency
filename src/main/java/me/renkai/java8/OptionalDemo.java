@@ -32,7 +32,7 @@ public class OptionalDemo {
         System.out.println(empty.orElseGet(() -> String.valueOf(Integer.MAX_VALUE)));
 
         try {
-            //orElseThrow，如果有值则返回，无值则抛出一场
+            //orElseThrow，如果有值则返回，无值则抛出异常
             empty.orElseThrow(IllegalArgumentException::new);
         } catch (IllegalArgumentException i) {
             //unchecked exceptions
