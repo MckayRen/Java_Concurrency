@@ -1,5 +1,8 @@
 package me.renkai.concurrency;
 
+import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -83,16 +86,31 @@ public final class BoundedBuffer<V> {
 
     public static void main(String[] args) {
         BoundedBuffer<String> b = new BoundedBuffer<>(4);
-        b.enqueue("66");
-        b.enqueue("77");
-        b.enqueue("88");
-        System.out.println(b.dequeue());
-        System.out.println(b.dequeue());
-        b.enqueue("99");
-        b.enqueue("00");
-        System.out.println(b.dequeue());
-        System.out.println(b.dequeue());
-        System.out.println(b.dequeue());
+
+        ExecutorService executors = Executors.newCachedThreadPool();
+        executors.submit(() -> {
+            for (int i = 0; i < 100; i++) {
+                b.enqueue(i + "");
+                try {
+                    Thread.sleep(new Random().nextInt(50));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+        executors.submit(() -> {
+            for (int i = 0; i < 100; i++) {
+                System.out.println(b.dequeue());
+                try {
+                    Thread.sleep(new Random().nextInt(100));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        executors.shutdown();
     }
 
 }
