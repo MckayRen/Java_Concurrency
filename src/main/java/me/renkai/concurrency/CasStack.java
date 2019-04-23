@@ -41,7 +41,7 @@ public class CasStack<E> {
     }
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         CasStack<Integer> stack = new CasStack<>();
         ExecutorService service = Executors.newCachedThreadPool();
         CountDownLatch latch = new CountDownLatch(2);
