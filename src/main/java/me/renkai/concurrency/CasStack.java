@@ -7,7 +7,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class CasStack<E> {
-    private static Runnable runnable;
     private AtomicReference<Node<E>> stackTop = new AtomicReference<>();
 
     public void push(E item) {
@@ -79,13 +78,18 @@ public class CasStack<E> {
                 e.printStackTrace();
             }
 
+            int count = 0;
             while (true) {
                 Integer v = stack.pop();
                 if (v != null) {
                     System.out.println(v);
+                    count++;
                 } else {
                     break;
                 }
+            }
+            if (count == 200) {
+                System.out.println("Good!");
             }
         });
 
