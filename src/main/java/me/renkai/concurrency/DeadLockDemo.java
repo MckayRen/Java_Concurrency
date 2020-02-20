@@ -47,6 +47,14 @@ public class DeadLockDemo {
         Thread a = new A();
         Thread b = new B();
         a.start();
+
+        try {
+            //一个两次调用start()，第二次会抛出IllegalThreadStateException
+            a.start();
+        } catch (IllegalThreadStateException e) {
+            e.printStackTrace();
+        }
+
         b.start();
 
         a.join();
